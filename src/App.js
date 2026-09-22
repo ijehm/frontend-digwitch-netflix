@@ -22,7 +22,10 @@ function App() {
 
       const response = await api.get("/api/v1/movies");
 
-      setMovies(response.data);
+      
+// WITH
+const moviesData = response.data.data || response.data.movies || response.data.results || response.data;
+setMovies(Array.isArray(moviesData) ? moviesData : []);
 
     } 
     catch(err)
