@@ -13,6 +13,10 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
+# Build args - THIS IS THE FIX
+ARG REACT_APP_API_URL=http://32.198.35.8:8080/api/v1
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+
 # Build the React app for production
 RUN npm run build
 
